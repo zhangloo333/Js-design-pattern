@@ -20,7 +20,6 @@ export default class List {
             //creat a iteam and init
             let item = createItem(this, itemData);
             item.init();
-            return item
         })
 
     }

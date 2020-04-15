@@ -22,25 +22,48 @@ export default class Item {
       let $btn = $('<button>');
       let _this = this;
       let fsm = new StateMachine({
-        init: 'add to shoppingCart',
+        init: 'ADD_TO_SHOPPING_CART',
         transitions: [
             {
                 name: 'addToCart',
-                from: 'add to shoppingCart',
-                to: 'delete from shoppingCart'
+                from: 'ADD_TO_SHOPPING_CART',
+                to: 'REMOVE_FROM_SHOPPING_CART'
             },
             {
-                name: 'addToCart',
-                from: 'add to shoppingCart',
-                to: 'delete from shoppingCart'
+                name: 'deleteFromCart',
+                from: 'REMOVE_FROM_SHOPPING_CART',
+                to: 'ADD_TO_SHOPPING_CART'
             }
-        ]
+        ],
+        methods: {
+            //add to shopping cart
+            onAddToCart: function() {
+                _this.addToCartHandle();
+                updateText();
+            },
+            //remove from the shopping cart
+            onDeleteFromCart: function(){
+                _this.deleteFromCartHandle();
+                updateText();
+            }
+        }
       })
+
+      function updateText() {
+        $btn.text(fsm.state);
+      }
+
       $btn.click(()=>{
           //添加到购物车
-
+        if(fsm.is('ADD_TO_SHOPPING_CART')) {
+            fsm.onAddToCart()
+        } else {
+            fsm.onDeleteFromCart()
+        }
           //从购物车移除
       })
+
+      updateText();
       $el.append($btn);
   }
 
