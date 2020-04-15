@@ -1,12 +1,4 @@
-class Person {
-    constructor(name) {
-        this.name = name;
-    }
+import App from './demo/App'
 
-    getName(){
-        return this.name;
-    }
-}
-
-let person = new Person("lee");
-alert(person.getName());
+let app = new App('app');
+app.init();
