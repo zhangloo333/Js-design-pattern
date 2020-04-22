@@ -1,27 +1,27 @@
 [
     {
         "id": 1,
-        "name": "<<js interview questions>>",
+        "name": "《js interview questions》",
         "price": 149,
         "discount":1
     },
     {
         "id": 2,
-        "name": "<<js advance interview question>>",
+        "name": "《js advance interview question》",
         "price": 366,
         "discount":1
 
     },
     {
         "id": 3,
-        "name": "<<React 模拟 大众点评 webapp>>",
+        "name": "《React 模拟 大众点评 webapp》",
         "price": 248,
         "discount":0
 
     },
     {
         "id": 4,
-        "name": "<<zepto 设计源码解读>>",
+        "name": "《zepto 设计源码解读》",
         "price": 366,
         "discount":0
 

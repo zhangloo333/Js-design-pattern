@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import ShoppingCart from './shppingCart/shoppingCart';
-import List from './List/List'
+import List from './list/list'
 
 export default class App {
     constructor(id) {
@@ -19,8 +19,8 @@ export default class App {
     }
 
     init() {
-        this.initShoppingCart()
+        //顺序不能反，要不会出现重复的内容，原因不明
         this.initList()
-        console.log('123')
+        this.initShoppingCart()
     }
 }

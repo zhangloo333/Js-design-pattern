@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import getCart from '../shppingCart/getCart'; 
 import StateMachine from 'javascript-state-machine';
+import { log } from '../util/log';
 
 export default class Item {
     constructor(list, data) {
@@ -13,8 +14,8 @@ export default class Item {
   initContent() {
     let $el = this.$el;
     let data = this.data;
-    $el.append($(`<p>name: ${data.name}</p>`));
-    $el.append($(`<p>price: ${data.price}</p>`));
+    $el.append($(`<p>name:${data.name}</p>`));
+    $el.append($(`<p>price:${data.price}</p>`));
   }
 
   initBtn() {
@@ -50,15 +51,17 @@ export default class Item {
       })
 
       function updateText() {
+        //   console.log('fsm.state',fsm.state);
         $btn.text(fsm.state);
       }
 
       $btn.click(()=>{
-          //添加到购物车
+        //添加到购物车
         if(fsm.is('ADD_TO_SHOPPING_CART')) {
-            fsm.onAddToCart()
+            //这个一定要调用状态的名字；
+            fsm.addToCart()
         } else {
-            fsm.onDeleteFromCart()
+            fsm.deleteFromCart()
         }
           //从购物车移除
       })
@@ -67,15 +70,16 @@ export default class Item {
       $el.append($btn);
   }
 
-  //add to shpping cart
+  //add to shpping cart, decoretor mode to print log 
+  @log('add')
   addToCartHandle() {
       this.cart.add(this.data);
   }
 
-  //从购物车删除
+  //从购物车删除, decoretor mode to print log
+  @log('del')
   deleteFromCartHandle() {
       this.cart.del(this.data.id)
-
   }
 
   render() {

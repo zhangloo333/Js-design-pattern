@@ -5,7 +5,7 @@ import createItem from './createItem';
 export default class List {
     constructor(app) {
         this.app = app;
-        this.$el = $('div')
+        this.$el = $('div');
     }
     // get data
     loadData() {
@@ -16,15 +16,15 @@ export default class List {
     }
     //generate list
     initItemList(data) {
-        data.each(itemData=> {
+        data.forEach(itemData=> {
             //creat a iteam and init
             let item = createItem(this, itemData);
             item.init();
         })
-
     }
     // render
     render(){
+        // debugger;
         this.app.$el.append(this.$el);
     }
     // init

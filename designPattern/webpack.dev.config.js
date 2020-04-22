@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugIn = require('html-webpack-plugin');
 
 module.exports = {
+    watch: true,
     entry: './src/index.js',
     output: {
         path:__dirname,
@@ -23,6 +24,10 @@ module.exports = {
         })
     ],
     devServer : {
+        watchContentBase:true,
+        watchOptions: {
+            poll: true
+          },
         contentBase: path.join(__dirname, './release'), //根目录
         open:true, //自动打开预览器
         port: 9000,
